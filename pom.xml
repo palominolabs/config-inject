@@ -8,7 +8,7 @@
     <version>7</version>
   </parent>
   <groupId>com.palominolabs.config</groupId>
-  <artifactId>config</artifactId>
+  <artifactId>config-inject</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
