@@ -45,7 +45,7 @@ Now you can inject the config interface into your classes as needed.
 ```java
 class SomeClass {
     @Inject
-    SomeClass(SomeAppConfig.class) {
+    SomeClass(SomeAppConfig config) {
         // do something configurable
     }
 }
