@@ -20,11 +20,11 @@ Once you've set up your config data, use config-magic to access it. Define a con
 
 ```java
 public interface SomeAppConfig {
-    @Config("host")
+    @Config("com.app.service.host")
     @Default("localhost")
-    String getHoset();
+    String getHost();
 
-    @Config("port")
+    @Config("com.app.service.port")
     @Default("1234")
     int getPort();
 }
@@ -44,9 +44,9 @@ Now you can inject the config interface into your classes as needed.
 
 ```java
 class SomeClass {
-
     @Inject
     SomeClass(SomeAppConfig.class) {
+        // do something configurable
     }
 }
 ```
