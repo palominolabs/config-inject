@@ -38,7 +38,7 @@ import static com.google.common.io.Closeables.closeQuietly;
  * </pre>
  *
  * The config sources are treated like a stack, so the last-specified one has priority for any keys that are defined in
- * multiple config sources.. </p>
+ * multiple config sources.
  *
  * <p> Any config keys that are not specified by any config source will use the defaults specified for the applicable
  * config-magic methods via {@code @Default} and {@code @DefaultNull} annotations. </p>
@@ -89,7 +89,7 @@ public final class ConfigModuleBuilder {
      *
      * @param url url of UTF-8 properties data
      * @return this
-     * @throws ConfigException
+     * @throws ConfigException if properties cannot be loaded
      */
     public ConfigModuleBuilder addPropertiesUrl(@Nonnull URL url) throws ConfigException {
         PropertiesConfiguration pc = getNewPropertiesConfig();
