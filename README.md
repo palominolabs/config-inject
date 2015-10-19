@@ -4,7 +4,7 @@ config-inject
 config-inject is a library to make it easy to inject configuration data into your classes with [Guice](http://code.google.com/p/google-guice/)
  and [config-magic](https://github.com/brianm/config-magic/).
 
-Artifacts are published to [Bintray](https://bintray.com), so use `jcenter()` in your Gradle dependencies block (or analogous Maven config).
+Artifacts are published to [Bintray](https://bintray.com/marshallpierce/maven/com.palominolabs.config%3Aconfig-inject/view), so use `jcenter()` in your Gradle dependencies block (or analogous Maven config).
 
 You can stack multiple sources of configuration data.
 
