@@ -1,9 +1,9 @@
 package com.palominolabs.config;
 
-import com.google.common.collect.Maps;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import java.util.HashMap;
 import org.apache.commons.configuration.MapConfiguration;
 import org.apache.commons.configuration.SystemConfiguration;
 import org.junit.After;
@@ -44,7 +44,7 @@ public final class ConfigModuleTest {
 
     @Test
     public void testPlainConfiguration() {
-        Map<String, Object> configMap = Maps.newHashMap();
+        Map<String, Object> configMap = new HashMap<String, Object>();
         configMap.put("conf1", "map-1");
         configModuleBuilder.addConfiguration(new MapConfiguration(configMap));
 

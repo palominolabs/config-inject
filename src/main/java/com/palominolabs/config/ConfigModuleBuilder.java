@@ -1,6 +1,7 @@
 package com.palominolabs.config;
 
-import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import org.apache.commons.configuration.CompositeConfiguration;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -16,8 +17,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayDeque;
 import java.util.Deque;
-
-import static com.google.common.io.Closeables.closeQuietly;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Builder for ConfigModule instances.
@@ -45,6 +46,8 @@ import static com.google.common.io.Closeables.closeQuietly;
  */
 @NotThreadSafe
 public final class ConfigModuleBuilder {
+
+    private static final Logger logger = LoggerFactory.getLogger(ConfigModuleBuilder.class);
 
     private final Deque<Configuration> configStack = new ArrayDeque<Configuration>();
 
@@ -119,7 +122,11 @@ public final class ConfigModuleBuilder {
             try {
                 pc.load(bis);
             } finally {
-                closeQuietly(bis);
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    logger.warn("Could not close input stream", e);
+                }
             }
         } catch (ConfigurationException e) {
             throw new ConfigException("Couldn't load input stream", e);
@@ -148,7 +155,7 @@ public final class ConfigModuleBuilder {
 
     private PropertiesConfiguration getNewPropertiesConfig() {
         PropertiesConfiguration pc = new PropertiesConfiguration();
-        pc.setEncoding(Charsets.UTF_8.name());
+        pc.setEncoding(StandardCharsets.UTF_8.name());
         pc.setDelimiterParsingDisabled(true);
         return pc;
     }
